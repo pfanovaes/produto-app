@@ -2,6 +2,7 @@ package br.com.letscode.produtoapp.servlet;
 
 import br.com.letscode.produtoapp.dao.BancoDeDados;
 import br.com.letscode.produtoapp.modelo.Produto;
+import br.com.letscode.produtoapp.modelo.acao.ProdutoFormulario;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,9 @@ public class Controladora extends HttpServlet {
 
         switch (acao) {
             case "produto-form":
-                req.getRequestDispatcher("WEB-INF/produto-form.jsp").forward(req, resp);
+                ProdutoFormulario produtoFormulario = new ProdutoFormulario(req, resp);
+                produtoFormulario.executar();
+
                 break;
 
             case "cadastrar-produto":
