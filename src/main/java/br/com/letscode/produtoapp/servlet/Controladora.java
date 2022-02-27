@@ -3,6 +3,7 @@ package br.com.letscode.produtoapp.servlet;
 import br.com.letscode.produtoapp.dao.BancoDeDados;
 import br.com.letscode.produtoapp.modelo.Produto;
 import br.com.letscode.produtoapp.modelo.acao.CadastrarProduto;
+import br.com.letscode.produtoapp.modelo.acao.ListarProdutos;
 import br.com.letscode.produtoapp.modelo.acao.ProdutoFormulario;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,6 @@ public class Controladora extends HttpServlet {
             case "produto-form":
                 ProdutoFormulario produtoFormulario = new ProdutoFormulario(req, resp);
                 produtoFormulario.executar();
-
                 break;
 
             case "cadastrar-produto":
@@ -34,11 +34,8 @@ public class Controladora extends HttpServlet {
                 break;
 
             case "listar-produtos":
-                BancoDeDados bd = new BancoDeDados();
-                List<Produto> produtos = bd.listar();
-
-                req.setAttribute("produtos", produtos);
-                req.getRequestDispatcher("WEB-INF/listar-produtos.jsp").forward(req, resp);
+                ListarProdutos listarProdutos = new ListarProdutos(req, resp);
+                listarProdutos.executar();
                 break;
         }
     }
