@@ -2,6 +2,7 @@ package br.com.letscode.produtoapp.servlet;
 
 import br.com.letscode.produtoapp.dao.BancoDeDados;
 import br.com.letscode.produtoapp.modelo.Produto;
+import br.com.letscode.produtoapp.modelo.acao.CadastrarProduto;
 import br.com.letscode.produtoapp.modelo.acao.ProdutoFormulario;
 
 import javax.servlet.ServletException;
@@ -28,23 +29,8 @@ public class Controladora extends HttpServlet {
                 break;
 
             case "cadastrar-produto":
-                String nome = req.getParameter("nome");
-                String descricao = req.getParameter("descricao");
-                String valor = req.getParameter("valor");
-                //converter string pra double
-                Double valorDouble = Double.valueOf(valor);
-
-                // criar objeto
-                Produto produto = new Produto();
-                produto.setNome(nome);
-                produto.setDescricao(descricao);
-                produto.setValor(valorDouble);
-
-                //salvar no banco
-                BancoDeDados bancoDeDados = new BancoDeDados();
-                bancoDeDados.salvar(produto);
-
-                resp.sendRedirect("/produto-app/controladora?acao=listar-produtos");
+                CadastrarProduto cadastrarProduto = new CadastrarProduto(req, resp);
+                cadastrarProduto.executar();
                 break;
 
             case "listar-produtos":
