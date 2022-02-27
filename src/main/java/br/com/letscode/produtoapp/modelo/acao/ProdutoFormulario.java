@@ -17,7 +17,7 @@ public class ProdutoFormulario {
 
     public void executar() {
         try {
-            req.getRequestDispatcher("WEB_INF/produto-form.jsp")
+            req.getRequestDispatcher("WEB-INF/produto-form.jsp")
                     .forward(req, resp);
         } catch (IOException | ServletException e) {
             e.printStackTrace();

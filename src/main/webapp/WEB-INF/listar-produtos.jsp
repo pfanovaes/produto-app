@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.com.letscode.produtoapp.modelo.Produto" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     // scriplets
 %>
@@ -14,27 +15,22 @@
 <body>
 <h2>Listagem de produtos</h2>
 
-<% List<Produto> produtos = (List<Produto>) request.getAttribute("produtos"); %>
-
 <table width="500" border="1px">
     <tr>
         <th>NOME</th>
         <th>DESCRIÇÃO</th>
         <th>VALOR</th>
     </tr>
-    <%
-        for(Produto produto : produtos
-        ) {
-    %>
-    <tr>
-        <td><%= produto.getNome() %></td>
-        <td><%= produto.getDescricao() %></td>
-        <td><%= produto.getValor() %></td>
 
-    </tr>
-    <%
-        }
-    %>
+    <c:forEach var="produto" items="${ produtos }">
+        <tr>
+            <td><c:out value="${produto.nome}" /></td>
+            <td><c:out value="${produto.descricao}" /></td>
+            <td><c:out value="${produto.valor}" /></td>
+        </tr>
+    </c:forEach>
+
+
 </table>
 <button onclick="window.location.href='/produto-app/controladora?acao=produto-form'">
     CADASTRAR NOVO
