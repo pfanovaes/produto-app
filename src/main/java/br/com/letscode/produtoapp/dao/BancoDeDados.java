@@ -19,11 +19,21 @@ public class BancoDeDados {
     }
 
     public void removerProduto(Integer id) {
-        for (int i = 0; i < BancoDeDados.produtos.size(); i++ ) {
-            if(BancoDeDados.produtos.get(i).getId().equals(id)) {
+        for (int i = 0; i < BancoDeDados.produtos.size(); i++) {
+            if (BancoDeDados.produtos.get(i).getId().equals(id)) {
                 BancoDeDados.produtos.remove(i);
             }
         }
 
     }
+
+    public Produto buscarPorId(Integer id) {
+        for (int i = 0; i < BancoDeDados.produtos.size(); i++) {
+            if (BancoDeDados.produtos.get(i).getId().equals(id)) {
+                return BancoDeDados.produtos.get(i);
+            }
+        }
+        return null;
+    }
+
 }

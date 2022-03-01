@@ -29,6 +29,7 @@
             <td><c:out value="${produto.descricao}" /></td>
             <td><c:out value="${produto.valor}" /></td>
             <td><a href="/produto-app/controladora?acao=remover-produtos&id=${produto.id}">Deletar</a></td>
+            <td><a href="/produto-app/controladora?acao=alterar-produtos&id=${produto.id}">Alterar</a></td>
         </tr>
     </c:forEach>
 

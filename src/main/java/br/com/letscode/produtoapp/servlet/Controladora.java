@@ -2,10 +2,7 @@ package br.com.letscode.produtoapp.servlet;
 
 import br.com.letscode.produtoapp.dao.BancoDeDados;
 import br.com.letscode.produtoapp.modelo.Produto;
-import br.com.letscode.produtoapp.modelo.acao.CadastrarProduto;
-import br.com.letscode.produtoapp.modelo.acao.ListarProdutos;
-import br.com.letscode.produtoapp.modelo.acao.ProdutoFormulario;
-import br.com.letscode.produtoapp.modelo.acao.RemoverProdutos;
+import br.com.letscode.produtoapp.modelo.acao.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +39,11 @@ public class Controladora extends HttpServlet {
             case "remover-produtos":
                 RemoverProdutos removerProdutos = new RemoverProdutos(req, resp);
                 removerProdutos.executar();
+                break;
+
+            case "alterar-produtos":
+                AlterarProdutos alterarProdutos = new AlterarProdutos(req, resp);
+                alterarProdutos.executar();
                 break;
         }
     }
