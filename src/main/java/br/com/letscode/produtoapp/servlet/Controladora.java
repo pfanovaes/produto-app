@@ -5,6 +5,7 @@ import br.com.letscode.produtoapp.modelo.Produto;
 import br.com.letscode.produtoapp.modelo.acao.CadastrarProduto;
 import br.com.letscode.produtoapp.modelo.acao.ListarProdutos;
 import br.com.letscode.produtoapp.modelo.acao.ProdutoFormulario;
+import br.com.letscode.produtoapp.modelo.acao.RemoverProdutos;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,6 +37,11 @@ public class Controladora extends HttpServlet {
             case "listar-produtos":
                 ListarProdutos listarProdutos = new ListarProdutos(req, resp);
                 listarProdutos.executar();
+                break;
+
+            case "remover-produtos":
+                RemoverProdutos removerProdutos = new RemoverProdutos(req, resp);
+                removerProdutos.executar();
                 break;
         }
     }

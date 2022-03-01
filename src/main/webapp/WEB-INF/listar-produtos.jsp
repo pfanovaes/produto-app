@@ -20,6 +20,7 @@
         <th>NOME</th>
         <th>DESCRIÇÃO</th>
         <th>VALOR</th>
+        <th>ACAO</th>
     </tr>
 
     <c:forEach var="produto" items="${ produtos }">
@@ -27,6 +28,7 @@
             <td><c:out value="${produto.nome}" /></td>
             <td><c:out value="${produto.descricao}" /></td>
             <td><c:out value="${produto.valor}" /></td>
+            <td><a href="/produto-app/controladora?acao=remover-produtos&id=${produto.id}">Deletar</a></td>
         </tr>
     </c:forEach>
 
