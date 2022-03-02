@@ -1,5 +1,7 @@
 package br.com.letscode.produtoapp.modelo;
 
+import java.util.Objects;
+
 public class Produto {
 
     private Integer id;
@@ -37,5 +39,17 @@ public class Produto {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Produto produto = (Produto) o;
+        return Objects.equals(id, produto.id);
     }
 }

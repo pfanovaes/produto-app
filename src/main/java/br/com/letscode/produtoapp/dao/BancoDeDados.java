@@ -10,9 +10,20 @@ public class BancoDeDados {
     private static Integer identificador = 1;
 
     public void salvar(Produto produto) {
-        produto.setId(identificador++);
-        BancoDeDados.produtos.add(produto);
-    }
+        if (produto.getId() == null) {
+            produto.setId(identificador++);
+            BancoDeDados.produtos.add(produto);
+        } else {
+            for (int i = 0; i < BancoDeDados.produtos.size(); i++) {
+                if (BancoDeDados.produtos.get(i).equals(produto)) {
+                    BancoDeDados.produtos.get(i).setNome(produto.getNome());
+                    BancoDeDados.produtos.get(i).setDescricao(produto.getDescricao());
+                    BancoDeDados.produtos.get(i).setValor(produto.getValor());
+                }
+            }
+        }
+
+    } // salvar
 
     public List<Produto> listar() {
         return BancoDeDados.produtos;

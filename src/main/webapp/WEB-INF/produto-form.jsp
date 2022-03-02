@@ -8,9 +8,10 @@
 <body>
 <fieldset> <legend>Formulário de cadastro de produtos</legend>
     <form action="/produto-app/controladora?acao=cadastrar-produto" method="post">
-        <label>Nome</label> <input type="nome" name="nome"/>
-        <label>Descricao</label> <input type="descricao" name="descricao"/>
-        <label>Valor</label> <input type="number" name="valor"/>
+        <input type="hidden" name="id" value="${ produto.id }"/>
+        <label>Nome</label> <input type="nome" name="nome" value="${ produto.nome }"/>
+        <label>Descricao</label> <input type="descricao" name="descricao" value="${ produto.descricao }"/>
+        <label>Valor</label> <input type="number" name="valor" value="${ produto.valor }"/>
 
         <button>Cadastrar</button>
     </form>

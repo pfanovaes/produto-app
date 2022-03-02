@@ -27,7 +27,7 @@ public class AlterarProdutos {
         req.setAttribute("produto", produto);
 
         try {
-            req.getRequestDispatcher("WEB_INF/produto-form.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/produto-form.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }

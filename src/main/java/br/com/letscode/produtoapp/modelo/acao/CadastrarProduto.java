@@ -21,6 +21,8 @@ public class CadastrarProduto {
         String nome = req.getParameter("nome");
         String descricao = req.getParameter("descricao");
         String valor = req.getParameter("valor");
+
+
         //converter string pra double
         Double valorDouble = Double.valueOf(valor);
 
@@ -29,6 +31,14 @@ public class CadastrarProduto {
         produto.setNome(nome);
         produto.setDescricao(descricao);
         produto.setValor(valorDouble);
+
+        // regra para verificar se é atualização ou cadastro
+
+        String id = req.getParameter("id");
+        if (id != null && id.trim().length() > 0) {
+            Integer idComoInteiro = Integer.valueOf(id);
+            produto.setId(idComoInteiro);
+        }
 
         //salvar no banco
         BancoDeDados bancoDeDados = new BancoDeDados();
