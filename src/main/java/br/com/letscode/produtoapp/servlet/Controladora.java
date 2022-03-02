@@ -22,19 +22,7 @@ public class Controladora extends HttpServlet {
 
         String acao = req.getParameter("acao");
 
-        // regra de login
 
-        HttpSession sessao = req.getSession();
-        Object usuariologado = sessao.getAttribute("usuariologado");
-
-        List<String> rotasprotegidas = Arrays.asList("produto-form", "cadastrar-produto", "listar-produtos", "remover-produtos", "alterar-produtos");
-
-        boolean eUmaRotaProtegida = rotasprotegidas.contains(acao);
-
-        if(eUmaRotaProtegida && usuariologado == null) {
-            resp.sendRedirect("/produto-app/login-form.jsp");
-            return;
-        }
 
         switch (acao) {
             case "produto-form":
