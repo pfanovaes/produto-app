@@ -1,7 +1,10 @@
 package br.com.letscode.produtoapp.modelo.acao;
 
+import br.com.letscode.produtoapp.modelo.Usuario;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class Login {
@@ -17,6 +20,8 @@ public class Login {
     public void executar() {
         String nome = req.getParameter("nome");
         String senha = req.getParameter("senha");
+
+
 
         if (!nome.equals("jorge")) {
             try {
@@ -35,6 +40,10 @@ public class Login {
                 e.printStackTrace();
             }
         }
+        Usuario usuario = new Usuario(nome, senha);
+
+        HttpSession sessao = req.getSession();
+        sessao.setAttribute("usuariologado", usuario);
 
         try {
             resp.sendRedirect("/produto-app/controladora?acao=listar-produtos");

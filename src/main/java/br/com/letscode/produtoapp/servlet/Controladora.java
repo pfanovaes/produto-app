@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("/controladora")
@@ -19,6 +21,20 @@ public class Controladora extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String acao = req.getParameter("acao");
+
+        // regra de login
+
+        HttpSession sessao = req.getSession();
+        Object usuariologado = sessao.getAttribute("usuariologado");
+
+        List<String> rotasprotegidas = Arrays.asList("produto-form", "cadastrar-produto", "listar-produtos", "remover-produtos", "alterar-produtos");
+
+        boolean eUmaRotaProtegida = rotasprotegidas.contains(acao);
+
+        if(eUmaRotaProtegida && usuariologado == null) {
+            resp.sendRedirect("/produto-app/login-form.jsp");
+            return;
+        }
 
         switch (acao) {
             case "produto-form":
@@ -32,8 +48,10 @@ public class Controladora extends HttpServlet {
                 break;
 
             case "listar-produtos":
+
                 ListarProdutos listarProdutos = new ListarProdutos(req, resp);
                 listarProdutos.executar();
+
                 break;
 
             case "remover-produtos":
