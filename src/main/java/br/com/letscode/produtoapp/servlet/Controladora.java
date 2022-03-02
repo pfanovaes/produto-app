@@ -45,6 +45,11 @@ public class Controladora extends HttpServlet {
                 AlterarProdutos alterarProdutos = new AlterarProdutos(req, resp);
                 alterarProdutos.executar();
                 break;
+
+            case "login":
+                Login login = new Login(req, resp);
+                login.executar();
+                break;
         }
     }
 }
